@@ -265,8 +265,8 @@ namespace RockWeb.Plugins.Finance
                         batch.Guid = Guid.NewGuid();
                         batch.Name = batchName;
                         batch.Status = BatchStatus.Open;
-                        batch.BatchStartDateTime = RockDateTime.Today;
-                        batch.BatchEndDateTime = batch.BatchStartDateTime.Value.AddDays( 1 );
+                        batch.BatchStartDateTime = RockDateTime.Today.AddDays( -(int)RockDateTime.Today.DayOfWeek );
+                        batch.BatchEndDateTime = batch.BatchStartDateTime.Value;
                         batch.ControlAmount = 0;
                         batchService.Add( batch );
 
