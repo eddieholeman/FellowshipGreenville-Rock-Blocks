@@ -49,9 +49,10 @@ namespace RockWeb.Blocks.Fundraising
     [NoteTypeField( "Note Type", "Note Type to use for participant comments", false, "Rock.Model.GroupMember", defaultValue: "FFFC3644-60CD-4D14-A714-E8DCC202A0E1", order: 5 )]
     [LinkedPage( "Donation Page", "The page where a person can donate to the fundraising opportunity", required: false, order: 6 )]
     [LinkedPage( "Main Page", "The main page for the fundraising opportunity", required: false, order: 7 )]
-    [BooleanField( "Show Clipboard Icon", "Show a clipboard icon which will copy the page url to the users clipboard", true, order:8)]
-    [TextField( "Image CSS Class", "CSS class to apply to the image.", false, "img-thumbnail", key: "ImageCssClass", order: 9 )]
-    [AttributeField( Rock.SystemGuid.EntityType.PERSON, "PersonAttributes", "The Person Attributes that the participant can edit", false, true, order: 7 )]
+    [LinkedPage( "Contributor List Page", "The page for the list of contributors", required: false, order: 8 )]	
+    [BooleanField( "Show Clipboard Icon", "Show a clipboard icon which will copy the page url to the users clipboard", true, order:9)]
+    [TextField( "Image CSS Class", "CSS class to apply to the image.", false, "img-thumbnail", key: "ImageCssClass", order: 10 )]
+    [AttributeField( Rock.SystemGuid.EntityType.PERSON, "PersonAttributes", "The Person Attributes that the participant can edit", false, true, order: 8 )]
     public partial class FundraisingParticipant : RockBlock
     {
         #region Base Control Methods
@@ -508,11 +509,14 @@ namespace RockWeb.Blocks.Fundraising
 
             mergeFields.Add( "AmountLeft", amountLeft );
             mergeFields.Add( "PercentMet", percentMet );
+			mergeFields.Add( "individualFundraisingGoal", individualFundraisingGoal );
+			mergeFields.Add( "contributionTotal", contributionTotal );
          
             var queryParams = new Dictionary<string, string>();
             queryParams.Add( "GroupId", hfGroupId.Value );
             queryParams.Add( "GroupMemberId", hfGroupMemberId.Value );
             mergeFields.Add( "MakeDonationUrl", LinkedPageUrl( "DonationPage", queryParams ));
+			mergeFields.Add( "ContributorListUrl", LinkedPageUrl( "ContributorListPage", queryParams ));
 
             var opportunityType = DefinedValueCache.Read( group.GetAttributeValue( "OpportunityType" ).AsGuid() );
 
@@ -528,6 +532,18 @@ namespace RockWeb.Blocks.Fundraising
 
             mergeFields.Add( "MakeDonationButtonText", makeDonationButtonText );
 
+            string contributorListButtonText = null;
+            if ( groupMember.PersonId == this.CurrentPersonId )
+            {
+                contributorListButtonText = "Contributor List";
+            }
+            else
+            {
+                contributorListButtonText = "Not Applicable";
+            }
+
+            mergeFields.Add( "contributorListButtonText", contributorListButtonText );
+			
             var progressLavaTemplate = this.GetAttributeValue( "ProgressLavaTemplate" );
             lProgressHtml.Text = progressLavaTemplate.ResolveMergeFields( mergeFields );
 
