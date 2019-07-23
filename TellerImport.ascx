@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="TellerImport.ascx.cs" Inherits="RockWeb.Plugins.Finance.TellerImport" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="TellerImport.ascx.cs" Inherits="RockWeb.Plugins.org_secc.Finance.TellerImport" %>
 
 <script src="/SignalR/hubs"></script>
 <script type="text/javascript">
@@ -62,9 +62,8 @@
                             <Rock:FileUploader ID="fuTellerFile" runat="server" Label="Teller File" Required="true" OnFileUploaded="fuTellerFile_FileUploaded" />
                         </div>
                         <div class="col-md-6">
-                            <Rock:RockDropDownList ID="ddlBatch" runat="server" Label="Batch" AutoPostBack="true" OnSelectedIndexChanged="ddlBatch_SelectedIndexChanged"
-                                Help="The batch to add transactions to."  />
-                            <Rock:RockDropDownList ID="ddlBatchName" runat="server" Label="New Batch Name" Required="false" Visible="false" /> 
+                            <Rock:RockDropDownList ID="ddlBatch" runat="server" Label="Batch" Required="false" DataValueField="Id" DataTextField="Name"
+                                Help="The batch to add transactions to. Leave blank to create a new batch." />
                         </div>
                     </div>
 
