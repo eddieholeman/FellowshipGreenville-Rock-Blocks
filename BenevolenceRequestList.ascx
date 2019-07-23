@@ -26,7 +26,7 @@
                         <Rock:Grid ID="gList" runat="server" DisplayType="Full" AllowSorting="true" OnRowDataBound="gList_RowDataBound" OnRowSelected="gList_Edit">
                             <Columns>
                                 <Rock:RockBoundField DataField="RequestDateTime" HeaderText="Date" DataFormatString="{0:d}" SortExpression="RequestDateTime" />
-                                <Rock:RockBoundField DataField="Campus.Name" HeaderText="Campus" SortExpression="Campus.Name" />
+                                <Rock:RockBoundField DataField="Campus.Name" HeaderText="Campus" SortExpression="Campus.Name" ColumnPriority="DesktopLarge" />
                                 <Rock:RockTemplateField SortExpression="RequestedByPersonAlias.Person.LastName, RequestedByPersonAlias.Person.NickName, LastName, FirstName" HeaderText="Name">
                                     <ItemTemplate>
                                         <asp:Literal ID="lName" runat="server" />
@@ -41,15 +41,15 @@
 
                                 <Rock:PersonField DataField="CaseWorkerPersonAlias.Person" SortExpression="CaseWorkerPersonAlias.Person.LastName, CaseWorkerPersonAlias.Person.NickName" HeaderText="Case Worker" ColumnPriority="Tablet" />
 
-                                <Rock:RockBoundField DataField="ResultSummary" HeaderText="Result Summary" SortExpression="ResultSummary" ColumnPriority="DesktopLarge" />
+                                <Rock:RockBoundField DataField="ResultSummary" HeaderText="Result Summary" SortExpression="ResultSummary" />
 
-                                <Rock:RockTemplateField HeaderText="Result Specifics" ColumnPriority="DesktopLarge">
+                                <Rock:RockTemplateField HeaderText="Result Specifics">
                                     <ItemTemplate>
                                         <asp:Literal ID="lResults" runat="server" />
                                     </ItemTemplate>
                                 </Rock:RockTemplateField>
 
-                                <Rock:RockTemplateField SortExpression="RequestStatusValue.Value" HeaderText="Status">
+                                <Rock:RockTemplateField SortExpression="RequestStatusValue.Value" HeaderText="Status" ColumnPriority="DesktopLarge">
                                     <ItemTemplate>
                                         <Rock:HighlightLabel ID="hlStatus" runat="server" />
                                     </ItemTemplate>
