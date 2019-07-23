@@ -27,7 +27,7 @@
 
             <asp:HiddenField ID="hfChartData" runat="server" />
             <asp:HiddenField ID="hfChartOptions" runat="server" />
-            <asp:Panel ID="pnlChart" runat="server" style="width:100%;height:170px" CssClass="clickable" />
+            <asp:Panel ID="pnlChart" runat="server" style="width:100%;height:170px" CssClass="clickable" visible="False" />
 
             <br />
 
