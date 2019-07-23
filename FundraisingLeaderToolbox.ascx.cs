@@ -186,10 +186,10 @@ namespace RockWeb.Blocks.Fundraising
                 {
                     fundingRemaining = null;
                 }
-                else if ( fundingRemaining < 0 )
-                {
-                    fundingRemaining = 0.00M;
-                }
+                /// else if ( fundingRemaining < 0 )
+                /// {
+                ///    fundingRemaining = 0.00M;
+                ///}
 
                 return new
                 {
@@ -199,6 +199,7 @@ namespace RockWeb.Blocks.Fundraising
                     groupMember.Person.FullName,
                     groupMember.Person.Gender,
                     FundingRemaining = fundingRemaining,
+					ContributionTotal = contributionTotal,
                     GroupRoleName = a.GroupRole.Name
                 };
             } ).ToList();
