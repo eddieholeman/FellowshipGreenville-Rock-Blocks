@@ -36,8 +36,8 @@ namespace RockWeb.Blocks.Finance
     /// <summary>
     /// Block used to list Benevolence Requests
     /// </summary>
-    [DisplayName( "Benevolence Request List" )]
-    [Category( "Finance" )]
+    [DisplayName( "Benevolence Request List FG" )]
+    [Category( "FG" )]
     [Description( "Block used to list Benevolence Requests." )]
 
     [ContextAware( typeof( Person ) )]
