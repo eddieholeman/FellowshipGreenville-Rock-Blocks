@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="PublicProfileEdit.ascx.cs" Inherits="RockWeb.Blocks.Cms.PublicProfileEdit" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="PublicProfileEdit.ascx.cs" Inherits="RockWeb.Plugins.Cms.PublicProfileEdit" %>
 
 <asp:UpdatePanel ID="upContent" runat="server">
     <ContentTemplate>
@@ -43,6 +43,7 @@
                                             <asp:Literal ID="lMaritalStatus" runat="server" /></li>
                                         <li>
                                             <asp:Literal ID="lGrade" runat="server" /></li>
+
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
@@ -142,7 +143,6 @@
                             <br />
                         </ItemTemplate>
                     </asp:Repeater>
-                    <asp:LinkButton ID="lbAddGroupMember" runat="server" CssClass="btn btn-primary btn-xs" OnClick="lbAddGroupMember_Click"> Add New Family Member</asp:LinkButton>
 
                     <asp:LinkButton ID="lbRequestChanges" runat="server" CssClass="btn btn-primary btn-xs" OnClick="lbRequestChanges_Click"> Request Additional Changes</asp:LinkButton>
                 </asp:Panel>
