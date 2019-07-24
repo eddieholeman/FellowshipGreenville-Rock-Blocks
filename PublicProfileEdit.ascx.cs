@@ -28,13 +28,13 @@ using Rock.Web.Cache;
 using Rock.Web.UI;
 using Rock.Web.UI.Controls;
 
-namespace RockWeb.Blocks.Cms
+namespace RockWeb.Plugins.Cms
 {
     /// <summary>
     /// The main Person Profile block the main information about a peron 
     /// </summary>
     [DisplayName( "Public Profile Edit" )]
-    [Category( "CMS" )]
+    [Category( "FG > CMS" )]
     [Description( "Public block for users to manage their accounts" )]
 
     [BooleanField( "Show Family Members", "Whether family members are shown or not.", true, order: 0 )]
@@ -840,18 +840,18 @@ namespace RockWeb.Blocks.Cms
                     .ToList()
                     .Where( av => !String.IsNullOrWhiteSpace( av.Value ) );
                 rptPersonAttributes.DataBind();
-
+			
+				
+				
                 // Families
-                if ( GetAttributeValue( "ShowFamilyMembers" ).AsBoolean() )
-                {
+
                     if ( ddlGroup.SelectedValueAsId().HasValue )
                     {
                         var group = new GroupService( rockContext ).Get( ddlGroup.SelectedValueAsId().Value );
                         if ( group != null )
                         {
 
-                            // Family Name
-                            lGroupName.Text = group.Name;
+
 
                             // Family Address
                             Guid? locationTypeGuid = GetAttributeValue( "AddressType" ).AsGuidOrNull();
@@ -878,8 +878,12 @@ namespace RockWeb.Blocks.Cms
                                     }
                                 }
                             }
-
-                            // Family Attributes
+                if ( GetAttributeValue( "ShowFamilyMembers" ).AsBoolean() )
+                {
+                            // Family Name
+                            lGroupName.Text = group.Name;
+							
+							// Family Attributes
                             group.LoadAttributes();
                             List<Guid> familyAttributeGuidList = GetAttributeValue( "FamilyAttributes" ).SplitDelimitedValues().AsGuidList();
                             var familyAttributes = group.Attributes.Where( a =>
