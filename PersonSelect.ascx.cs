@@ -153,7 +153,7 @@ namespace RockWeb.Blocks.CheckIn
                 () => CurrentCheckInState.CheckIn.CurrentFamily.GetPeople( true )
                     .SelectMany( p => p.GroupTypes.Where( t => !t.ExcludedByFilter ) )
                     .Count() <= 0,
-                "<p>Sorry, there are currently not any available areas that the selected person can check into.</p>" );
+                "<p>Please visit the nearest check-in desk for assistance.</p>" );
         }
 
     }
