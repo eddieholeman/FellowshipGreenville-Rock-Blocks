@@ -13,17 +13,17 @@
         <ul class="dropdown-menu">
             <asp:PlaceHolder ID="phMyAccount" runat="server">
                 <li>
-                    <asp:HyperLink ID="hlMyAccount" runat="server" Text="My Account" />
+                    <asp:HyperLink ID="h3MyAccount" runat="server" Text="My Account" />
                 </li>
             </asp:PlaceHolder>
             <asp:PlaceHolder ID="phMySettings" runat="server">
                 <li>
-                    <asp:HyperLink ID="hlMySettings" runat="server" Text="My Settings" />
+                    <asp:HyperLink ID="h3MySettings" runat="server" Text="My Settings" />
                 </li>
             </asp:PlaceHolder>
             <asp:PlaceHolder ID="phMyProfile" runat="server">
                 <li>
-                    <asp:HyperLink ID="hlMyProfile" runat="server" Text="My Profile" />
+                    <asp:HyperLink ID="h3MyProfile" runat="server" Text="My Profile" />
                 </li>
             </asp:PlaceHolder>
             <asp:Literal ID="lDropdownItems" runat="server" />
